@@ -4,26 +4,28 @@ from heatmap import get_heatmap_image
 
 
 size = (600, 600)
-points = []
+points1 = []
+points2 = []
+points3 = []
 
 for x in range(500):
-    points.append(
+    points1.append(
         (random.random() * 200 - 100, random.random() * 200 - 100)
     )
 bounds = ((-100, -100), (100, 100))
 
-for x in range(100):
-    points.append(
+for x in range(50):
+    points2.append(
         (random.random() * 50 - 100, random.random() * 50 - 100)
     )
 
-for x in range(600):
-    points.append(
+for x in range(50):
+    points3.append(
         (random.random() * 50, random.random() * 50)
     )
 
 get_heatmap_image(
-    points,
+    points1 + points2 + points3,
     data_bounds=bounds,
     size=size,
     scheme='classic',
@@ -32,7 +34,7 @@ get_heatmap_image(
 ).save('example_1.png')
 
 get_heatmap_image(
-    points,
+    points1 + points2 + points3,
     data_bounds=bounds,
     size=size,
     scheme='classic',
@@ -41,25 +43,25 @@ get_heatmap_image(
 ).save('example_2.png')
 
 get_heatmap_image(
-    points,
+    points1 + points2 + points3,
     data_bounds=bounds,
     size=size,
     scheme='classic',
-    dotsize=80,
-    pointgrid_size=50,
+    dotsize=100,
+    pointgrid_size=70,
 ).save('example_3.png')
 
 get_heatmap_image(
-    points,
+    points1[:200] + points2 + points3,
     data_bounds=bounds,
     size=size,
     scheme='fire',
-    dotsize=20,
-    pointgrid_size=6,
+    dotsize=120,
+    pointgrid_size=20,
 ).save('example_4.png')
 
 get_heatmap_image(
-    points,
+    points1 + points2 + points3,
     data_bounds=bounds,
     size=size,
     scheme='classic',
