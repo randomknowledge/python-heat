@@ -1,13 +1,13 @@
 # coding=utf-8
 from setuptools import setup
-import heatmap
+from heatmap import __version__ as VERSION
 
 
 setup(
     name="python-heat",
     author="Florian Finke",
     author_email="flo@randomknowledge.org",
-    version=heatmap.__version__,
+    version=VERSION,
     packages=['heatmap'],
     package_data={'heatmap': ['data/**/*']},
     url='https://github.com/randomknowledge/python-heat',
