@@ -10,7 +10,7 @@ setup(
     version=heatmap.__version__,
     packages=['heatmap'],
     package_data={'heatmap': ['data/**/*']},
-    url='https://github.com/randomknowledge/django-webvideo',
+    url='https://github.com/randomknowledge/python-heat',
     include_package_data=True,
     license='MIT',
     description='A simple heatmap generator',
