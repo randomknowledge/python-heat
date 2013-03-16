@@ -5,13 +5,15 @@ from heatmap.dot import Dot
 
 
 class HeatMap():
-    def __init__(self, size=(256, 256), scheme='classic', dotsize=50, pointgrid_size=1):
+    def __init__(self, size=(256, 256), scheme='classic', dotsize=50, pointgrid_size=1, padding=0):
         if pointgrid_size < 1 or pointgrid_size >= min(size):
             raise ValueError("pointgrid_size must be >= 1 and <= {0}!".format(min(size)))
         self.size = size
+        self.padsize = (size[0] + padding * 2, size[1] + padding * 2)
+        self.padding = padding
         self.pointgrid_size = pointgrid_size
         self.colors = ColorScheme(scheme).get()
-        self.img = Image.new('RGBA', size=size, color=(0, 0, 0, 0))
+        self.img = Image.new('RGBA', size=self.padsize, color=(0, 0, 0, 0))
         self.points = []
         self.dot = Dot(size=dotsize)
         self.dots = {}
@@ -68,8 +70,8 @@ class HeatMap():
     def _colorize(self):
         _computed_opacities = {}
         pix = self.img.load()
-        for x in range(self.size[0]):
-            for y in range(self.size[1]):
+        for x in range(self.padsize[0]):
+            for y in range(self.padsize[1]):
                 # Get color for this intensity
                 # ============================
                 # is a value
@@ -96,7 +98,7 @@ class HeatMap():
 
     def generate(self):
         for point, dot in self.dots.iteritems():
-            self.img.paste(dot, point, dot)
+            self.img.paste(dot, (point[0] + self.padding, point[1] + self.padding), dot)
         self._colorize()
 
     def save(self, out, outformat=None):

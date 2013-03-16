@@ -56,3 +56,18 @@ get_heatmap_image(
 ).save('example_4.png')
 ```
 ![Image](./example_4.png)
+___
+
+```python
+# Example with padding
+get_heatmap_image(
+    points,
+    data_bounds=bounds,
+    size=size,
+    scheme='classic',
+    dotsize=30,
+    pointgrid_size=1,
+    padding=20
+).save('example_5.png')
+```
+![Image](./example_5.png)

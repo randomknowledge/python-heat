@@ -54,6 +54,16 @@ get_heatmap_image(
     data_bounds=bounds,
     size=size,
     scheme='fire',
-    dotsize=100,
+    dotsize=20,
     pointgrid_size=6,
 ).save('example_4.png')
+
+get_heatmap_image(
+    points,
+    data_bounds=bounds,
+    size=size,
+    scheme='classic',
+    dotsize=30,
+    pointgrid_size=1,
+    padding=100
+).save('example_5.png')
